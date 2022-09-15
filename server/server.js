@@ -5,12 +5,15 @@ const mongoose = require("mongoose");
 const User = require("./api/models/userListModels");
 const bodyParser = require("body-parser");
 const routes = require("./api/routes/userListRoutes");
+const cors = require("cors");
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/Userdb");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cors());
 
 routes(app);
 
